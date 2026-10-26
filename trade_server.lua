@@ -156,7 +156,7 @@ local CHEST_CONFIG = {
         relay = "redstone_relay_3",
         side = "top",
         activeHigh = false
-    },
+    }
 }
 
 local lastKnown = {}
