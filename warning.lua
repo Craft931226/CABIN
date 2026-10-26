@@ -75,11 +75,11 @@ rect(1, PH-4, PW, PH-4, Y)
 rect(1, 6, 2, PH-4, Y)
 rect(PW-1, 6, PW, PH-4, Y)
 
--- Title divider
-rect(9, 40, PW-8, 41, Y)
+-- Divider: move up
+rect(9, 38, PW-8, 39, Y)
 
--- Red restricted-area panel
-rect(10, 44, PW-9, 62, R)
+-- Red panel: increase top padding
+rect(10, 41, PW-9, 62, R)
 
 -- Embedded Chinese bitmap font
 -- Main title: 22x22
@@ -89,6 +89,8 @@ local BIG = {
 "00000000000000000001fff007ff00000c00000c001ffffe000c0007fff8060c18060c1807fff8060c18060c1807fff8000c00000c0007fffc000c00000c00000c00",
 "0000000000000000800200c00208c00218c00218c00218dc1fd8fc1fdbec021fcc023ccc0278cc0218cc0218cc03d8c803d8c80f18c81c1882101802001806000ffe"
 }
+-- Pad the final glyph to 22 complete rows
+BIG[4] = BIG[4] .. string.rep("0", math.max(0, 132 - #BIG[4]))
 
 -- Secondary warning: 16x16
 local SMALL = {
@@ -127,9 +129,11 @@ local function drawGlyphs(glyphs, size, gap, y0, color)
     end
 end
 
--- Main title and restricted warning
-drawGlyphs(BIG, 22, 4, 16, Y)
-drawGlyphs(SMALL, 16, 4, 46, A)
+-- Main title: move up 4 pixels
+drawGlyphs(BIG, 22, 4, 12, Y)
+
+-- Warning text: centered vertically in red panel
+drawGlyphs(SMALL, 16, 4, 44, A)
 
 -- Convert pixels to CC 2x3 graphics
 local function render()
@@ -203,7 +207,7 @@ local function label(text, row, color)
     m.write(text)
 end
 
-label("!! SECURITY WARNING !!", 4, colors.yellow)
+label("!! SECURITY WARNING !!", 3, colors.yellow)
 label("AUTHORIZED PERSONNEL ONLY", H-2, colors.white)
 
 m.setCursorBlink(false)
