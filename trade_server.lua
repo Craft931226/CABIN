@@ -17,10 +17,6 @@ local LABELS = {
   ["thermal:invar_ingot"] = "Invar Ingot"
 }
 local CHEST_CONFIG = {
-    ["enderstorage:ender_chest_11"] = {
-        label = "Silver Coin",
-        maxStack = 64
-    },
     ["enderstorage:ender_chest_0"] = {
         label = "Blaze cake",
         maxStack = 64,
@@ -146,7 +142,21 @@ local CHEST_CONFIG = {
         relay = "redstone_relay_3",
         side = "left",
         activeHigh = false
-    }
+    },
+    ["enderstorage:ender_chest_11"] = {
+        label = "Silver Coin",
+        maxStack = 64,
+        relay = "redstone_relay_3",
+        side = "back",
+        activeHigh = false
+    },
+    ["enderstorage:ender_chest_21"] = {
+        label = "Silver coin Original",
+        maxStack = 64,
+        relay = "redstone_relay_3",
+        side = "top",
+        activeHigh = false
+    },
 }
 
 local lastKnown = {}
