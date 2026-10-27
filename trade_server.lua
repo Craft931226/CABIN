@@ -185,7 +185,7 @@ local function scan()
   local errors = 0
 
   for _, name in ipairs(peripheral.getNames()) do
-    if not SIDES[name]
+    if CHEST_CONFIG[name]
       and peripheral.hasType(name, "inventory") then
 
       local ok1, items =
@@ -200,7 +200,8 @@ local function scan()
     	  end
 	  end
 
-      if ok1 and ok2 and type(slots) == "number" then
+      if ok1 and type(items) == "table"
+        and ok2 and type(slots) == "number" then
         local count = 0
         local itemId = nil
         local firstSlot = nil
@@ -307,7 +308,11 @@ local function scan()
           mixed = mixed
         })
       else
-        errors = errors + 1
+          errors = errors + 1
+          print("SCAN ERROR: " .. name)
+          print("list: " .. tostring(ok1))
+          print("items type: " .. type(items))
+          print("size: " .. tostring(slots))
       end
     end
   end
