@@ -156,6 +156,27 @@ local CHEST_CONFIG = {
         relay = "redstone_relay_3",
         side = "top",
         activeHigh = false
+    },
+    ["enderstorage:ender_chest_22"] = {
+        label = "Straw",
+        maxStack = 64,
+        relay = "redstone_relay_4",
+        side = "left",
+        activeHigh = false
+    },
+    ["enderstorage:ender_chest_23"] = {
+        label = "Dirt",
+        maxStack = 64,
+        relay = "redstone_relay_4",
+        side = "right",
+        activeHigh = false
+    },
+    ["enderstorage:ender_chest_24"] = {
+        label = "Feather",
+        maxStack = 64,
+        relay = "redstone_relay_4",
+        side = "front",
+        activeHigh = false
     }
 }
 
